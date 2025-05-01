@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My Portfolio</title>
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #ffffff;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Scrollbar Styling */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f4f4f4;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #0000007a;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #000000a1;
+      }
+
+      /* Header */
+      header {
+        background-color: #0000007a;
+        color: #ffffff;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      nav ul li {
+        margin: 10px 20px;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: #00000067;
+      }
+
+      /* About Section */
+      #about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 0;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+
+      #about .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        width: 90%;
+      }
+
+      .portfolio-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #0000007a;
+        margin-right: 30px;
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-image:hover {
+        transform: scale(1.1);
+      }
+
+      .text-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+
+      .text-content p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #0000007a;
+      }
+
+      /* Skills Section */
+      #skills {
+        text-align: center;
+        background-color: #f4f4f9;
+        padding: 50px 0;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .skill {
+        background-color: #0000007a;
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .skill:hover {
+        background-color: #0000007a;
+        transform: scale(1.1);
+      }
+
+      /* Projects Section */
+      #projects {
+        text-align: center;
+        padding: 50px 0;
+        background-color: #ffffff;
+      }
+
+      .project {
+        background-color: #0000003b;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project h3 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+      }
+
+      .project p {
+        font-size: 1rem;
+        color: hsl(0, 0%, 33%);
+      }
+
+      .project:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Contact Section */
+      #contact {
+        padding: 50px 0;
+        background-color: #0000007a;
+        color: white;
+      }
+
+      form input,
+      form textarea {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        width: 100%;
+        background-color: #0000007a;
+        color: #fff;
+      }
+
+      form button {
+        background-color: #000000d3;
+        color: #fff;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      form button:hover {
+        background-color: #2980b9;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #2c3e50;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      footer p {
+        font-size: 1rem;
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 768px) {
+        #about .container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .portfolio-image {
+          margin-bottom: 20px;
+          width: 150px;
+          height: 150px;
+        }
+
+        .text-content {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <h1>My Portfolio</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" data-aos="fade-up">
+      <div class="container">
+        <img src="imager.jpg" alt="Portfolio Image" class="portfolio-image" />
+        <div class="text-content">
+          <h1>Hello, I'm <span id="typed-name"></span></h1>
+          <p>
+            I'm a student passionate about web development, design, and
+            technology.<br />
+            I believe in the power of hard work and am always learning new
+            skills to improve my craft.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" data-aos="zoom-in">
+      <div class="container">
+        <h2>Skills</h2>
+        <br />
+        <div class="skills-list">
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">React</div>
+          <div class="skill">Node.js</div>
+          <div class="skill">Next.js</div>
+          <div class="skill">Git</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" data-aos="fade-left">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="project">
+          <h3>Project 1: Portfolio Website</h3>
+          <p>
+            A personal portfolio website built using HTML, CSS, and JavaScript
+            to showcase my skills and projects.
+          </p>
+        </div>
+        <div class="project">
+          <h3>Project 2: E-commerce App</h3>
+          <p>
+            An e-commerce application developed with React and Node.js,
+            featuring a fully functional shopping cart.
+          </p>
+        </div>
+        <div class="project">
+          <h3>Project 3: Weather App</h3>
+          <p>
+            A weather forecasting app that uses an external API to display
+            weather data based on the user's location.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" data-aos="fade-up">
+      <div class="container">
+        <h2>Contact</h2>
+        <form
+          action="mailto:hasanyehya@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Abul Hasan. All rights reserved.</p>
+    </footer>
+
+    <!-- AOS and Typing Animation Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+    <script>
+      const text = "Abul Hasan";
+      let i = 0;
+      const speed = 150;
+
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("typed-name").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      window.onload = typeWriter;
+    </script>
+  </body>
+</html>
